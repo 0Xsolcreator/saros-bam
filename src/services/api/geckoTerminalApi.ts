@@ -228,7 +228,7 @@ export const geckoTerminalApi = createApi({
         let formatedDlmmPools: DlmmPoolsData[] = []
 
         filteredUSDCANDSOLPools.map((pool) => {
-          const baseTokenMint = pool.relationships.base_token.data.id.substring(6)
+          const baseTokenMint = pool.relationships.base_token.data.id.substring(7)
           const tokenInfo = tokenInfoDatas.find((token) => token.id === baseTokenMint)
 
           formatedDlmmPools.push({

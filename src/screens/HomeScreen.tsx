@@ -5,7 +5,7 @@ import { useAppTheme } from "@/theme/context"
 import { ThemedStyle } from "@/theme/types"
 import { ViewStyle } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context"
-
+  
 export default function HomeScreen() {
   const { themed } = useAppTheme()
   return (
