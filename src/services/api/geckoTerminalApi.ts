@@ -189,16 +189,12 @@ export const geckoTerminalApi = createApi({
           dlmmPools.data = [...dlmmPools.data, ...(pageResponse.data as DlmmPoolsState).data]
         }
 
-        console.log(dlmmPools.data.length)
-
         let filteredUSDCANDSOLPools = dlmmPools.data.filter((pool) => {
           const isNameEndingWithUSDCOrSOL =
             pool.attributes.name.endsWith("USDC") || pool.attributes.name.endsWith("SOL")
 
           return isNameEndingWithUSDCOrSOL
         })
-
-        console.log(filteredUSDCANDSOLPools.length)
 
         let constructedMintQuery: string[] = []
         for (let i = 0; i < filteredUSDCANDSOLPools.length / 100; i++) {
@@ -209,10 +205,8 @@ export const geckoTerminalApi = createApi({
           })
           constructedMintQuery.push(mintQuery.join(","))
         }
-        console.log(constructedMintQuery)
 
         const tokenInfoDatas: TokenInfoResponse = []
-        // Use Promise.all to await all fetches
         await Promise.all(
           constructedMintQuery.map(async (mintQuery) => {
             const tokenInfoResponse = await fetch(
@@ -222,8 +216,6 @@ export const geckoTerminalApi = createApi({
             tokenInfoDatas.push(...tokenInfoData)
           }),
         )
-
-        console.log(tokenInfoDatas.length)
 
         let formatedDlmmPools: DlmmPoolsData[] = []
 

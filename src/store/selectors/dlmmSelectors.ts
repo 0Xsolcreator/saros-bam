@@ -11,13 +11,26 @@ export const selectFilteredDlmmData = createSelector(
   (data, filters) => {
     let result = Array.isArray(data) ? [...data] : []
 
-    if (filters.sortBy !== undefined && filters.sortBy !== null) {
-      result.sort((a, b) => {
-        const fieldA = a[filters.sortBy as keyof typeof a]
-        const fieldB = b[filters.sortBy as keyof typeof b]
+    const rangeFilters = filters.rangeFilters
 
-        if (filters.sortOrder === "asc") return fieldA - fieldB
-        return fieldB - fieldA
+    for (const [field, { min, max }] of Object.entries(rangeFilters)) {
+      result = result.filter((item) => {
+        if (min !== null && item[field] < min) return false
+        if (max !== null && item[field] > max) return false
+        return true
+      })
+    }
+
+    if (filters.sortBy) {
+      result.sort((a, b) => {
+        const valA = a[filters.sortBy!]
+        const valB = b[filters.sortBy!]
+
+        if (typeof valA === "number" && typeof valB === "number") {
+          return filters.sortOrder === "asc" ? valA - valB : valB - valA
+        }
+
+        return 0
       })
     }
 

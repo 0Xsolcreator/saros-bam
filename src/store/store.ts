@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux"
 
-import authReducer from "./features/authSlice"
 import { geckoTerminalApi } from "@/services/api/geckoTerminalApi"
 import { dlmmPoolFiltersSlice } from "./features/dlmmPoolFiltersSlice"
 
 export const store = configureStore({
   reducer: {
-    auth: authReducer,
     dlmmPoolFilters: dlmmPoolFiltersSlice.reducer,
     [geckoTerminalApi.reducerPath]: geckoTerminalApi.reducer,
   },

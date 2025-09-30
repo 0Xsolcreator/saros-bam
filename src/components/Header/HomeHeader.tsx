@@ -1,21 +1,26 @@
 import { useAppTheme } from "@/theme/context"
 import { ThemedStyle } from "@/theme/types"
-import { View, ViewStyle } from "react-native"
+import { TouchableOpacity, View, ViewStyle } from "react-native"
 import IconSVG from "../../../assets/icons/logo/icon.svg"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
+import { useRouter } from "expo-router"
 
 export function HomeHeader() {
   const { themed, theme } = useAppTheme()
+  const router = useRouter()
   return (
     <View style={themed($HomeHeaderStyle)}>
       <IconSVG width={40} height={40} />
-      <View style={themed($AdvancedFilterButton)}>
+      <TouchableOpacity
+        style={themed($AdvancedFilterButton)}
+        onPress={() => router.navigate("/(tabs)/(home)/advanced-filters")}
+      >
         <FontAwesome6
           name="filter-circle-dollar"
           size={24}
           color={theme.colors.palette.neutral900}
         />
-      </View>
+      </TouchableOpacity>
     </View>
   )
 }

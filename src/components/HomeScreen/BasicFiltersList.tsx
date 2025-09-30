@@ -1,4 +1,4 @@
-import { setSortBy, SortField, toggleSortOrder } from "@/store/features/dlmmPoolFiltersSlice"
+import { setSortBy, SortField, sortFieldNames, toggleSortOrder } from "@/store/features/dlmmPoolFiltersSlice"
 import { TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
 import { Text } from "../Text"
@@ -6,18 +6,6 @@ import { ThemedStyle } from "@/theme/types"
 import { useAppTheme } from "@/theme/context"
 import { useAppDispatch, useAppSelector } from "@/store/store"
 import Ionicons from "@expo/vector-icons/Ionicons"
-
-const sortFieldNames: { field: Exclude<SortField, null>; label: string }[] = [
-  { field: "Mcap", label: "Market Cap" },
-  { field: "TwentyFourHrVol", label: "Volume" },
-  { field: "Fees", label: "Fees" },
-  { field: "FDV", label: "FDV" },
-  { field: "TVL", label: "TVL" },
-  { field: "Age", label: "Age" },
-  { field: "OrganicScore", label: "Organization Score" },
-  { field: "Holders", label: "Holders" },
-  { field: "VolatilityPercent", label: "Volatility" },
-]
 
 export default function BasicFiltersList() {
   const { themed } = useAppTheme()
