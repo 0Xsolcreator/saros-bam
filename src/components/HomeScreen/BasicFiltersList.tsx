@@ -1,4 +1,9 @@
-import { setSortBy, SortField, sortFieldNames, toggleSortOrder } from "@/store/features/dlmmPoolFiltersSlice"
+import {
+  setSortBy,
+  SortField,
+  sortFieldNames,
+  toggleSortOrder,
+} from "@/store/features/dlmmPoolFiltersSlice"
 import { TextStyle, TouchableOpacity, View, ViewStyle } from "react-native"
 import { ScrollView } from "react-native-gesture-handler"
 import { Text } from "../Text"
@@ -87,4 +92,9 @@ const $SelectedFilterItemStyle: ThemedStyle<ViewStyle> = ({ colors, spacing }) =
   flexDirection: "row",
   gap: spacing.xs,
   backgroundColor: colors.palette.neutral500,
+  shadowColor: colors.palette.neutral900,
+  shadowOffset: { width: 0, height: 8 },
+  shadowOpacity: 0.9,
+  shadowRadius: 12,
+  elevation: 8,
 })

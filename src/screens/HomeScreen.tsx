@@ -1,11 +1,12 @@
+import { View, ViewStyle } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+
 import { HomeHeader } from "@/components/Header/HomeHeader"
 import BasicFiltersList from "@/components/HomeScreen/BasicFiltersList"
 import DlmmPoolList from "@/components/HomeScreen/DlmmPoolList"
 import Title from "@/components/HomeScreen/Title"
 import { useAppTheme } from "@/theme/context"
 import { ThemedStyle } from "@/theme/types"
-import { View, ViewStyle } from "react-native"
-import { SafeAreaView } from "react-native-safe-area-context"
 
 export default function HomeScreen() {
   const { themed } = useAppTheme()
