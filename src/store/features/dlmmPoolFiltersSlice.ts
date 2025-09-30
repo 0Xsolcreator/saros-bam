@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-type SortField =
-  | "mcap"
-  | "volume"
-  | "fees"
-  | "fdv"
-  | "tvl"
-  | "age"
-  | "orgScore"
-  | "holders"
-  | "volatility"
+export type SortField =
+  | "Mcap"
+  | "TwentyFourHrVol"
+  | "Fees"
+  | "FDV"
+  | "TVL"
+  | "Age"
+  | "OrganicScore"
+  | "Holders"
+  | "VolatilityPercent"
   | null
 
 type SortOrder = "asc" | "desc"
@@ -20,7 +20,7 @@ interface DlmmPoolFiltersState {
 }
 
 const initialState: DlmmPoolFiltersState = {
-  sortBy: null,
+  sortBy: "Mcap",
   sortOrder: "desc",
 }
 

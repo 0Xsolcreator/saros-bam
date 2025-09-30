@@ -20,30 +20,20 @@ export default function DlmmPoolList() {
   return (
     <View style={themed($ListViewStyle)}>
       {!isLoading && !isError && filteredData && (
-        <View
-          style={{
-            height: "100%",
-            width: "100%",
+        <FlashList
+          data={filteredData}
+          keyExtractor={(item) => item.Address}
+          renderItem={({ item }) => {
+            return <InfoCard input={item} />
           }}
-        >
-          <FlashList
-            data={filteredData}
-            keyExtractor={(item) => item.Address}
-            renderItem={({ item }) => {
-              return <InfoCard input={item} />
-            }}
-            contentContainerStyle={{
-              paddingBottom: 150,
-            }}
-          />
-        </View>
+        />
       )}
     </View>
   )
 }
 
 const $ListViewStyle: ThemedStyle<ViewStyle> = ({ spacing, colors }) => ({
-  flexDirection: "column",
+  flex: 1,
   borderRadius: 8,
   padding: spacing.md,
   backgroundColor: colors.palette.neutral100,
