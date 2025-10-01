@@ -7,6 +7,9 @@ A realtime analytics, automation and management platform aggregating DLMM protoc
 >
 > If you are here then you are very early, so follow the roadmap to keep track of project updates.
 
+## 🎥 Project Demo
+👉 [Watch Demo Video](https://www.canva.com/design/DAG0kf5uXMM/hs4ChmvqGVIdNnS_DcGy3w/watch)
+
 # What is this about?
 
 The DLMM landscape is new yet rapidly adopted LP technology because of its efficiency in precisely targeting price ranges. There is a large UX gap for LP traders to find a perfect LP and add their positions to it. Mostly because they have to use one analysis tool to filter out the right one, another platform to place the order, and another platform to view their portfolios.
