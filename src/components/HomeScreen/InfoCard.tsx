@@ -1,4 +1,4 @@
-import { TextStyle, View, ViewStyle } from "react-native"
+import { Linking, TextStyle, View, ViewStyle } from "react-native"
 import Ionicons from "@expo/vector-icons/Ionicons"
 import * as Clipboard from "expo-clipboard"
 
@@ -17,11 +17,21 @@ export default function InfoCard({ input }: { input: DlmmPoolsData }) {
     toast.success("Address Copied")
   }
 
+  const openDlmmPoolInWebsite = (address: string) => {
+    const url = `https://saros.xyz/dlmm/${address}`
+    Linking.openURL(url).catch((err) => console.error("Failed to open URL:", err))
+  }
+
   return (
     <View style={themed($InfoCardStyle)}>
       <View style={themed($InfoCardHeaderStyle)}>
         <View style={themed($InfoCardHeaderLeftStyle)}>
-          <Text style={themed($InfoCardHeaderLeftTextStyle)}>{input.Pair}</Text>
+          <Text
+            style={themed($InfoCardHeaderLeftTextStyle)}
+            onPress={() => openDlmmPoolInWebsite(input.Address)}
+          >
+            {input.Pair}
+          </Text>
           <Ionicons
             name="copy"
             size={16}

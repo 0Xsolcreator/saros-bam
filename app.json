@@ -5,21 +5,19 @@
   "version": "1.0.0",
   "orientation": "portrait",
   "userInterfaceStyle": "automatic",
-  "icon": "./assets/images/app-icon-all.png",
+  "icon": "./assets/images/adaptive-icon.png",
   "updates": {
     "fallbackToCacheTimeout": 0
   },
   "newArchEnabled": true,
   "jsEngine": "hermes",
-  "assetBundlePatterns": [
-    "**/*"
-  ],
+  "assetBundlePatterns": ["**/*"],
   "android": {
-    "icon": "./assets/images/app-icon-android-legacy.png",
+    "icon": "./assets/images/adaptive-icon.png",
     "package": "com.sarosbam",
     "adaptiveIcon": {
-      "foregroundImage": "./assets/images/app-icon-android-adaptive-foreground.png",
-      "backgroundImage": "./assets/images/app-icon-android-adaptive-background.png"
+      "foregroundImage": "./assets/images/splash-icon-light.png",
+      "backgroundColor": "#1E1E1E"
     },
     "allowBackup": false,
     "edgeToEdgeEnabled": true
@@ -39,17 +37,17 @@
     [
       "expo-splash-screen",
       {
-        "image": "./assets/images/app-icon-android-adaptive-foreground.png",
+        "image": "././assets/images/splash-icon-light.png",
         "imageWidth": 300,
         "resizeMode": "contain",
-        "backgroundColor": "#191015"
+        "backgroundColor": "#1E1E1E"
       }
     ],
     [
       "react-native-edge-to-edge",
       {
         "android": {
-          "parentTheme": "Light",
+          "parentTheme": "Dark",
           "enforceNavigationBarContrast": false
         }
       }

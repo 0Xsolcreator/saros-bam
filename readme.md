@@ -25,12 +25,13 @@ This is where the idea of **BAM** comes in. A mobile app to analyze DLMM pools i
     - sort via metrics
   - [x] Advanced Filters
     - filter via range
-- [] Alerts Automation
-  - [] Dialect Alerts
-    - [] Automated Notification Workflows
-    - [] Automated On-chain Order Workflows
-- [] Portfolio Management
-- [] On-chain Orders
+- [ ] Alerts Automation
+  - [ ] Dialect Alerts
+    - [ ] Automated Notification Workflows
+    - [ ] Automated On-chain Order Workflows
+- [ ] Integrate Multiple DLMM Protocols
+- [ ] Portfolio Management
+- [ ] On-chain Orders
 
 # Technical Overview
 
