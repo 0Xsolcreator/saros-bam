@@ -148,6 +148,7 @@ interface DlmmPoolsState {
 }
 
 export interface DlmmPoolsData {
+  dex: string
   Pair: string
   Address: string
   TwentyFourHrVol: number
@@ -172,21 +173,23 @@ export const geckoTerminalApi = createApi({
   reducerPath: "geckoTerminalApi",
   baseQuery,
   endpoints: (build) => ({
-    getAndUpdateDlmmPools: build.query<DlmmPoolsData[], { dex: string }>({
-      async queryFn({ dex }, _api, _extraOptions, fetchWithBQ) {
+    getAndUpdateDlmmPools: build.query<DlmmPoolsData[], { dexs: string[] }>({
+      async queryFn({ dexs }, _api, _extraOptions, fetchWithBQ) {
         let dlmmPools: DlmmPoolsState = { data: [] }
 
-        for (let i = 1; i <= 10; i++) {
-          const pageResponse = await fetchWithBQ({
-            url: `networks/solana/dexes/${dex}/pools?page=${i}`,
-            method: "GET",
-          })
+        for (const dex of dexs) {
+          for (let i = 1; i <= 10; i++) {
+            const pageResponse = await fetchWithBQ({
+              url: `networks/solana/dexes/${dex}/pools?page=${i}`,
+              method: "GET",
+            })
 
-          if (pageResponse.error || !pageResponse.data) {
-            break
+            if (pageResponse.error || !pageResponse.data) {
+              break
+            }
+
+            dlmmPools.data = [...dlmmPools.data, ...(pageResponse.data as DlmmPoolsState).data]
           }
-
-          dlmmPools.data = [...dlmmPools.data, ...(pageResponse.data as DlmmPoolsState).data]
         }
 
         let filteredUSDCANDSOLPools = dlmmPools.data.filter((pool) => {
@@ -224,6 +227,7 @@ export const geckoTerminalApi = createApi({
           const tokenInfo = tokenInfoDatas.find((token) => token.id === baseTokenMint)
 
           formatedDlmmPools.push({
+            dex: pool.relationships.dex.data.id,
             Pair: pool.attributes.name,
             Address: pool.attributes.address,
             TwentyFourHrVol: pool.attributes.volume_usd.h24

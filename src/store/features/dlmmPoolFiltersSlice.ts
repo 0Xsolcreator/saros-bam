@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
+export type Protocol = "all" | "saros-dlmm" | "meteora"
+
 export type SortField =
   | "Mcap"
   | "TwentyFourHrVol"
@@ -24,12 +26,14 @@ export type RangeFilters = Record<RangeField, RangeFilter>
 type SortOrder = "asc" | "desc"
 
 interface DlmmPoolFiltersState {
+  protocol: Protocol
   sortBy: SortField
   sortOrder: SortOrder
   rangeFilters: RangeFilters
 }
 
 const initialState: DlmmPoolFiltersState = {
+  protocol: "all",
   sortBy: "Mcap",
   sortOrder: "desc",
   rangeFilters: {
@@ -100,6 +104,9 @@ export const dlmmPoolFiltersSlice = createSlice({
   name: "dlmmPoolFilters",
   initialState,
   reducers: {
+    setProtocol(state, action: PayloadAction<Protocol>) {
+      state.protocol = action.payload
+    },
     setSortBy(state, action) {
       state.sortBy = action.payload
     },
@@ -134,6 +141,7 @@ export const dlmmPoolFiltersSlice = createSlice({
 })
 
 export const {
+  setProtocol,
   setSortBy,
   setSortOrder,
   toggleSortOrder,

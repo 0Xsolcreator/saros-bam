@@ -2,14 +2,28 @@ import { createSelector } from "@reduxjs/toolkit"
 import { RootState } from "../store"
 
 const selectDlmmQueryResult = (state: RootState) =>
-  state.geckoTerminalApi.queries['getAndUpdateDlmmPools({"dex":"saros-dlmm"})']?.data ?? []
+  state.geckoTerminalApi.queries['getAndUpdateDlmmPools({"dexs":["saros-dlmm","meteora"]})']
+    ?.data ?? []
 
 const selectFilters = (state: RootState) => state.dlmmPoolFilters
+const protocol = (state: RootState) => state.dlmmPoolFilters.protocol
 
 export const selectFilteredDlmmData = createSelector(
-  [selectDlmmQueryResult, selectFilters],
-  (data, filters) => {
+  [selectDlmmQueryResult, selectFilters, protocol],
+  (data, filters, protocol) => {
     let result = Array.isArray(data) ? [...data] : []
+
+    switch (protocol) {
+      case "saros-dlmm":
+        result = result.filter((item) => item.dex === "saros-dlmm")
+        break
+      case "meteora":
+        result = result.filter((item) => item.dex === "meteora")
+        break
+      case "all":
+      default:
+        break
+    }
 
     const rangeFilters = filters.rangeFilters
 

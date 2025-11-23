@@ -11,7 +11,7 @@ export default function DlmmPoolList() {
   const { themed } = useAppTheme()
 
   const { isError, isLoading } = useGetAndUpdateDlmmPoolsQuery(
-    { dex: "saros-dlmm" },
+    { dexs: ["saros-dlmm", "meteora"] },
     { pollingInterval: 5 * 60 * 1000 },
   )
 
