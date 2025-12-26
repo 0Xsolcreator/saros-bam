@@ -241,9 +241,9 @@ export const geckoTerminalApi = createApi({
             BinStep: 0,
             Holders: tokenInfo?.holderCount || 0,
             OrganicScore: tokenInfo?.organicScore || 0,
-            VolatilityPercent: tokenInfo?.stats24h.priceChange || 0,
-            LiquidityChangePercent: tokenInfo?.stats24h.liquidityChange || 0,
-            VolumeChangePercent: tokenInfo?.stats24h.volumeChange || 0,
+            VolatilityPercent: tokenInfo?.stats24h?.priceChange || 0,
+            LiquidityChangePercent: tokenInfo?.stats24h?.liquidityChange || 0,
+            VolumeChangePercent: tokenInfo?.stats24h?.volumeChange || 0,
           })
         })
 
